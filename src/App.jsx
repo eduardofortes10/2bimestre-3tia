@@ -4,17 +4,18 @@ import Home from './pages/Home';
 
 function App() {
   return (
-    <div className="min-h-screen bg-green-900 flex justify-center">
-      <div className="w-full max-w-6xl px-4 py-6">
-        <BrowserRouter>
+    <BrowserRouter>
+      <div className="min-h-screen w-screen bg-green-900 flex justify-center">
+        <div className="w-full max-w-[1200px] px-4">
           <Routes>
             <Route index element={<Home />} />
-            <Route path="card/:code" element={<Detalhes />} />
+            <Route path="/card/:code" element={<Detalhes />} />
           </Routes>
-        </BrowserRouter>
+        </div>
       </div>
-    </div>
+    </BrowserRouter>
   );
 }
 
 export default App;
+  

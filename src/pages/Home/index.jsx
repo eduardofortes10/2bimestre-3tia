@@ -21,7 +21,7 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-green-900 py-10 px-4">
+    <div className="min-h-screen bg-green-900 py-10 px-4 border-red-500">
       <div className="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
         {cards.map((card) => (
           <Link
