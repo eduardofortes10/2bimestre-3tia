@@ -6,17 +6,17 @@ export const FavoritesProvider = ({ children }) => {
   const [favorites, setFavorites] = useState([]);
 
   const addToFavorites = (item) => {
-    if (!favorites.some(fav => fav.id === item.id)) {
+    if (!favorites.some(fav => fav.code === item.code)) {
       setFavorites([...favorites, item]);
     }
   };
 
-  const removeFromFavorites = (itemId) => {
-    setFavorites(favorites.filter(item => item.id !== itemId));
+  const removeFromFavorites = (itemCode) => {
+    setFavorites(favorites.filter(item => item.code !== itemCode));
   };
 
-  const isFavorite = (itemId) => {
-    return favorites.some(item => item.id === itemId);
+  const isFavorite = (itemCode) => {
+    return favorites.some(item => item.code === itemCode);
   };
 
   return (
@@ -25,4 +25,5 @@ export const FavoritesProvider = ({ children }) => {
     </FavoritesContext.Provider>
   );
 };
-export const UseFavorites = () => useContext(FavoritesContext);
+
+export const useFavorites = () => useContext(FavoritesContext);

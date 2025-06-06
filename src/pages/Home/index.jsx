@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react';
-import { useFavorite } from '../../context/favoriteContext';
+import { useFavorites } from '../../context/favoriteContext.jsx';
 import { Link } from 'react-router-dom';
 
 export default function Home() {
   const [cards, setCards] = useState([]);
-  const { addFavorite, removeFavorite, isFavorite, favorites } = useFavorite();
+  const { addToFavorites, removeFromFavorites, isFavorite, favorites } = useFavorites();
 
   useEffect(() => {
     async function fetchCards() {
@@ -22,9 +22,10 @@ export default function Home() {
       value: card.value,
       suit: card.suit
     };
+
     isFavorite(card.code)
-      ? removeFavorite(card.code)
-      : addFavorite(cardData);
+      ? removeFromFavorites(card.code)
+      : addToFavorites(cardData);
   };
 
   return (
@@ -45,7 +46,7 @@ export default function Home() {
                 isFavorite(card.code) ? 'bg-red-500' : 'bg-blue-500'
               }`}
             >
-              {isFavorite(card.code) ? 'Remover' : 'Favoritar'}
+              {isFavorite(card.code) ? '★ Remover' : '☆ Favoritar'}
             </button>
           </div>
         ))}
